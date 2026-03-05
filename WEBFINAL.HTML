@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>S&N Leads Network | Virtual Professional Staffing</title>
+  
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===== BRAND VARIABLES - DARKER PREMIUM SCHEME ===== */
+    :root {
+      --primary-purple: #a674ee;
+      --vivid-lavender: #d360f9;
+      --pastel-purple: #bfa5ea;
+      --dark-purple: #63459F;
+      --heading-black: #000000;
+      --body-text: #4a3a6b; /* Darker for better contrast */
+      --white: #ffffff;
+      --light-bg: #f5f1ff; /* Softer lavender background */
+      --medium-bg: #ede7f6; /* Slightly deeper for section contrast */
+      --shadow: 0 6px 24px rgba(99, 69, 159, 0.18);
+      --shadow-hover: 0 12px 40px rgba(99, 69, 159, 0.35);
+      --shadow-strong: 0 8px 32px rgba(166, 116, 238, 0.25);
+      --gradient-cta: linear-gradient(135deg, var(--primary-purple), var(--vivid-lavender));
+      --border-radius: 14px;
+      --spacing-section: 90px;
+      --spacing-box: 28px;
+      --border-accent: 1px solid rgba(166, 116, 238, 0.2);
+    }
+
+    /* ===== GLOBAL RESET & BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      color: var(--body-text);
+      background: var(--light-bg);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--heading-black);
+      margin-bottom: 18px;
+      line-height: 1.3;
+    }
+    p { margin-bottom: 18px; color: var(--body-text); }
+    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== UTILITIES ===== */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .section { padding: var(--spacing-section) 0; }
+    .text-center { text-align: center; }
+    
+    .gradient-cta {
+      background: var(--gradient-cta);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 15px;
+      display: inline-block;
+      box-shadow: var(--shadow-strong);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.3px;
+    }
+    .gradient-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 45px rgba(166, 116, 238, 0.45);
+    }
+    .gradient-cta:active { transform: translateY(-1px); }
+    
+    .box {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: var(--spacing-box);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      transition: all 0.35s ease;
+      border: var(--border-accent);
+    }
+    .box:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+    .box-light {
+      background: var(--pastel-purple);
+      opacity: 0.12;
+    }
+    .highlight-box {
+      background: var(--gradient-cta);
+      color: var(--white);
+      border: none;
+    }
+    .highlight-box p { color: var(--white); opacity: 0.98; }
+    .highlight-box h3 { color: var(--white); }
+
+    /* ===== HEADER & NAV ===== */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 3px 25px rgba(99, 69, 159, 0.12);
+      z-index: 1000;
+      padding: 18px 0;
+      border-bottom: var(--border-accent);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--heading-black);
+      letter-spacing: -0.5px;
+    }
+    .logo span { 
+      color: var(--primary-purple);
+      background: var(--gradient-cta);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    nav ul { display: flex; gap: 32px; align-items: center; }
+    nav a {
+      font-weight: 600;
+      color: var(--dark-purple);
+      padding: 10px 6px;
+      position: relative;
+      font-size: 15px;
+    }
+    nav a:hover, nav a.active {
+      color: var(--primary-purple);
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: var(--gradient-cta);
+      border-radius: 3px;
+      transition: width 0.35s ease;
+    }
+    nav a:hover::after, nav a.active::after { width: 70%; }
+    
+    /* Dropdown */
+    .dropdown { position: relative; }
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--white);
+      min-width: 220px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-hover);
+      padding: 14px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: all 0.35s ease;
+      z-index: 100;
+      border: var(--border-accent);
+    }
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 24px;
+      font-size: 14px;
+      color: var(--body-text);
+      font-weight: 500;
+    }
+    .dropdown-menu a:hover {
+      background: var(--medium-bg);
+      color: var(--primary-purple);
+      padding-left: 28px;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle { display: none; font-size: 26px; cursor: pointer; color: var(--dark-purple); }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      padding: 110px 0 70px;
+      background: linear-gradient(135deg, var(--light-bg) 0%, var(--medium-bg) 100%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-size: 46px;
+      margin-bottom: 28px;
+      color: var(--heading-black);
+      letter-spacing: -1px;
+    }
+    .hero-content p {
+      font-size: 19px;
+      margin-bottom: 36px;
+      color: var(--body-text);
+      line-height: 1.7;
+    }
+    .hero-box {
+      background: var(--gradient-cta);
+      color: var(--white);
+      padding: 36px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-strong);
+      border: none;
+    }
+    .hero-box h3 { color: var(--white); margin-bottom: 20px; font-size: 22px; }
+    .hero-box p { color: var(--white); opacity: 0.97; margin-bottom: 28px; line-height: 1.7; }
+    .hero-box .gradient-cta {
+      background: var(--white);
+      color: var(--primary-purple);
+      font-weight: 700;
+    }
+    .hero-box .gradient-cta:hover {
+      box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    }
+
+    /* ===== COMPANY OVERVIEW ===== */
+    .overview { 
+      background: var(--white);
+      border-top: var(--border-accent);
+      border-bottom: var(--border-accent);
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+    .overview h2 { font-size: 32px; margin-bottom: 24px; }
+    .contact-info {
+      background: var(--medium-bg);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      border: var(--border-accent);
+    }
+    .contact-info h3 { color: var(--heading-black); margin-bottom: 20px; font-size: 22px; }
+    .contact-info p { margin-bottom: 12px; font-size: 15px; }
+    .contact-info a {
+      color: var(--primary-purple);
+      font-weight: 600;
+    }
+    .contact-info a:hover { 
+      text-decoration: underline;
+      color: var(--vivid-lavender);
+    }
+
+    /* ===== SERVICES PAGE ===== */
+    .page-section { display: none; }
+    .page-section.active { display: block; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 28px;
+      margin-bottom: 70px;
+    }
+    .problem-box h3 {
+      font-size: 19px;
+      color: var(--heading-black);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .problem-box h3::before {
+      content: '';
+      width: 4px;
+      height: 18px;
+      background: var(--gradient-cta);
+      border-radius: 2px;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 28px;
+    }
+    .service-box {
+      background: var(--white);
+      border-left: 5px solid var(--primary-purple);
+      padding: 28px;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      box-shadow: var(--shadow);
+      border: var(--border-accent);
+      border-left-color: var(--gradient-cta);
+    }
+    .service-box h3 {
+      font-size: 19px;
+      margin-bottom: 14px;
+      color: var(--heading-black);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .service-box h3::before {
+      content: '✓';
+      color: var(--primary-purple);
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    /* ===== INDUSTRIES ===== */
+    .industries-heading {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 36px;
+      position: relative;
+      padding-bottom: 20px;
+    }
+    .industries-heading::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 4px;
+      background: var(--gradient-cta);
+      border-radius: 2px;
+    }
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 28px;
+    }
+    .industry-box h3 {
+      color: var(--heading-black);
+      margin-bottom: 14px;
+      font-size: 21px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .industry-box h3::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--gradient-cta);
+      border-radius: 50%;
+    }
+
+    /* ===== PROCESS ===== */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 36px;
+      margin-top: 50px;
+    }
+    .step {
+      text-align: center;
+      padding: 36px 28px;
+      position: relative;
+    }
+    .step::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -18px;
+      width: 36px;
+      height: 2px;
+      background: var(--pastel-purple);
+      opacity: 0.6;
+    }
+    .step:last-child::after { display: none; }
+    .step-number {
+      width: 56px;
+      height: 56px;
+      background: var(--gradient-cta);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 22px;
+      margin: 0 auto 24px;
+      box-shadow: var(--shadow-strong);
+      border: 3px solid var(--white);
+    }
+    .step h3 { font-size: 21px; margin-bottom: 18px; color: var(--heading-black); }
+
+    /* ===== CONTACT ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .contact-intro h2 { font-size: 36px; margin-bottom: 24px; }
+    .contact-intro p { font-size: 17px; margin-bottom: 24px; }
+    
+    .contact-form {
+      background: var(--white);
+      padding: 36px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-hover);
+      border: var(--border-accent);
+    }
+    .form-group { margin-bottom: 24px; }
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--heading-black);
+      font-size: 14px;
+      letter-spacing: 0.3px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 16px 18px;
+      border: 2px solid var(--pastel-purple);
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      background: var(--light-bg);
+      color: var(--heading-black);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-purple);
+      background: var(--white);
+      box-shadow: 0 0 0 4px rgba(166, 116, 238, 0.15);
+    }
+    .form-group textarea { min-height: 110px; resize: vertical; }
+    .required { color: #c0392b; margin-left: 4px; font-weight: 600; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(135deg, var(--medium-bg) 0%, var(--light-bg) 100%);
+      padding: 70px 0 35px;
+      margin-top: 50px;
+      border-top: var(--border-accent);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 45px;
+      margin-bottom: 50px;
+    }
+    .footer-section h4 {
+      font-size: 19px;
+      margin-bottom: 24px;
+      color: var(--heading-black);
+      position: relative;
+      padding-bottom: 12px;
+    }
+    .footer-section h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--gradient-cta);
+      border-radius: 2px;
+    }
+    .footer-section p { font-size: 14px; margin-bottom: 18px; line-height: 1.7; }
+    .footer-links a {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 12px;
+      color: var(--body-text);
+      padding-left: 0;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .footer-links a::before {
+      content: '▹';
+      margin-right: 8px;
+      color: var(--primary-purple);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .footer-links a:hover {
+      color: var(--primary-purple);
+      padding-left: 8px;
+    }
+    .footer-links a:hover::before { opacity: 1; }
+    
+    .social-buttons {
+      display: flex;
+      gap: 14px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .social-btn {
+      background: var(--gradient-cta);
+      color: var(--white);
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-strong);
+      transition: all 0.3s ease;
+    }
+    .social-btn:hover { 
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(166, 116, 238, 0.5);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: var(--border-accent);
+      font-size: 13px;
+      color: var(--body-text);
+      opacity: 0.9;
+      line-height: 1.8;
+    }
+    .footer-list {
+      font-size: 13px;
+      color: var(--body-text);
+      line-height: 2;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer-list strong { color: var(--heading-black); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      .hero-grid, .overview-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-content { text-align: center; }
+      .hero-content h1 { font-size: 40px; }
+      .step::after { display: none; }
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        top: 72px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 72px);
+        background: var(--white);
+        flex-direction: column;
+        padding: 40px 28px;
+        transition: left 0.4s ease;
+        box-shadow: 0 15px 40px rgba(99, 69, 159, 0.2);
+        z-index: 999;
+      }
+      nav ul.active { left: 0; }
+      .menu-toggle { display: block; }
+      .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0 0 0 24px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        border: none;
+      }
+      .dropdown:hover .dropdown-menu { max-height: 600px; }
+      .hero { padding: 70px 0 50px; }
+      .hero-content h1 { font-size: 34px; }
+      .section { padding: 70px 0; }
+      .industries-heading { font-size: 30px; }
+      .contact-grid { gap: 50px; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 20px; }
+      .hero-content h1 { font-size: 30px; }
+      .gradient-cta { padding: 14px 28px; font-size: 14px; }
+      .box { padding: 24px; }
+      .footer-list { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container nav-container">
+      <div class="logo">S&N <span>Leads Network</span></div>
+      <div class="menu-toggle" id="menuToggle">☰</div>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+          <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link">Industries ▾</a>
+            <div class="dropdown-menu">
+              <a href="#" class="industry-link" data-industry="startups">Startups</a>
+              <a href="#" class="industry-link" data-industry="healthcare">Healthcare</a>
+              <a href="#" class="industry-link" data-industry="education">Education</a>
+              <a href="#" class="industry-link" data-industry="ecommerce">E-commerce</a>
+              <a href="#" class="industry-link" data-industry="finance">Finance</a>
+              <a href="#" class="industry-link" data-industry="technology">Technology</a>
+              <a href="#" class="industry-link" data-industry="legal">Legal</a>
+              <a href="#" class="industry-link" data-industry="manufacturing">Manufacturing</a>
+              <a href="#" class="industry-link" data-industry="nonprofit">Non Profit</a>
+            </div>
+          </li>
+          <li><a href="#" class="nav-link" data-page="process">Process</a></li>
+          <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <!-- ===== HOME PAGE ===== -->
+    <section id="home" class="page-section active">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <h1>Empowering Your Business Virtually</h1>
+            <p>At S&N Leads Network, we don't just provide staff — we deliver performance-ready virtual professionals prepared to contribute from day one. Whether you need customer support, sales teams, administrative assistance, or technical specialists, we help you scale efficiently without the burden of traditional hiring.</p>
+            <button class="gradient-cta" onclick="showPage('contact')">SCHEDULE YOUR CONSULTATION</button>
+          </div>
+          <div class="hero-box">
+            <h3>Company Overview</h3>
+            <p><strong>Type:</strong> Virtual partner services, sales representatives, customer service representatives, and more.</p>
+            <p>During periods of business growth and high customer reach, many companies face a shortage of staff to handle customers and queries efficiently. At S&N Leads Network, we provide pre-trained individuals to businesses in need of these critical services, ensuring your operations run smoothly during peak times.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview + Contact -->
+      <section class="section overview">
+        <div class="container overview-grid">
+          <div>
+            <h2>Why Partner With Us?</h2>
+            <p>We specialize in connecting businesses with pre-trained, performance-ready virtual professionals who integrate seamlessly into your operations. Our flexible staffing solutions help you reduce overhead, improve productivity, and achieve sustainable growth—without the complexities of traditional hiring.</p>
+            <p>Whether you need support for a seasonal surge, a long-term project, or ongoing operational assistance, our virtual teams are prepared to deliver results from day one.</p>
+          </div>
+          <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p><strong>Email:</strong> <a href="mailto:sn.leads.network@gmail.com">sn.leads.network@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/company/s-n-leads" target="_blank">linkedin.com/company/s-n-leads</a></p>
+            <button class="gradient-cta" style="margin-top:20px;width:100%" onclick="showPage('contact')">Get in Touch</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ===== SERVICES PAGE ===== -->
+    <section id="services" class="page-section">
+      <section class="section">
+        <div class="container">
+          <h2 class="text-center" style="margin-bottom:50px">Challenges We Solve</h2>
+          
+          <!-- Problems Grid -->
+          <div class="problems-grid">
+            <div class="box problem-box">
+              <h3>Seasonal & Demand Surges</h3>
+              <p>During peak seasons or periods of rapid growth, businesses often struggle to manage increased workloads, leading to overwhelmed teams and reduced service quality.</p>
+            </div>
+            <div class="box problem-box">
+              <h3>Rising Staffing Costs</h3>
+              <p>Hiring permanent employees comes with high salaries, benefits, compliance requirements, and regulatory responsibilities that significantly increase operational expenses.</p>
+            </div>
+            <div class="box problem-box">
+              <h3>Lack of Workforce Flexibility</h3>
+              <p>Many companies require short-term or project-based support, but traditional hiring models do not offer the flexibility needed for quarterly, six-month, or seasonal contracts.</p>
+            </div>
+            <div class="box problem-box">
+              <h3>Time-Consuming Training</h3>
+              <p>Recruiting and training new employees demands valuable time and resources, slowing down productivity and delaying business growth.</p>
+            </div>
+          </div>
+
+          <!-- Our Services -->
+          <h2 class="text-center" style="margin:70px 0 50px">Our Services</h2>
+          <div class="services-grid">
+            <div class="service-box">
+              <h3>Pre-Trained Professionals Ready to Perform</h3>
+              <p>Our virtual assistants are fully prepared to integrate into your operations, eliminating the time and resources typically required for onboarding and training.</p>
+            </div>
+            <div class="service-box">
+              <h3>Cost-Efficient Staffing Solutions</h3>
+              <p>We provide a highly economical alternative to traditional hiring models, helping your business reduce overhead while maintaining quality and productivity.</p>
+            </div>
+            <div class="service-box">
+              <h3>Flexible, On-Demand Engagement</h3>
+              <p>There is no requirement for permanent hiring. Our services allow you to scale your workforce based on your operational needs, whether short-term, project-based, or long-term support.</p>
+            </div>
+            <div class="service-box">
+              <h3>No HR or Compliance Obligations</h3>
+              <p>We remove the complexities associated with regulatory compliance, employee benefits, and administrative employment responsibilities.</p>
+            </div>
+            <div class="service-box">
+              <h3>Immediate Deployment</h3>
+              <p>Our professionals are available to begin supporting your business promptly, ensuring continuity and operational efficiency without delay.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ===== INDUSTRIES PAGE ===== -->
+    <section id="industries" class="page-section">
+      <section class="section">
+        <div class="container">
+          <h2 class="industries-heading">Industries We Serve</h2>
+          <div class="industries-grid">
+            <div class="box industry-box">
+              <h3>Healthcare</h3>
+              <p>Our virtual assistants help healthcare providers manage administrative tasks such as appointment coordination, patient inquiries, documentation processing, and data entry to ensure efficient daily operations and improved patient communication.</p>
+            </div>
+            <div class="box industry-box">
+              <h3>Education</h3>
+              <p>We assist educational institutions with admissions support, inquiry handling, enrollment coordination, record management, and administrative assistance to streamline processes and enhance communication with prospective students.</p>
+            </div>
+            <div class="box industry-box">
+              <h3>E-commerce</h3>
+              <p>For online retailers, our virtual teams handle customer support, order tracking, returns management, live chat assistance, and back-office operations to improve customer satisfaction and maintain smooth business performance.</p>
+            </div>
+            <div class="box industry-box">
+              <h3>Finance</h3>
+              <p>We support financial service providers with administrative assistance, document preparation, client follow-ups, scheduling, and data management while maintaining professionalism, accuracy, and confidentiality.</p>
+            </div>
+            <div class="box industry-box">
+              <h3>Technology</h3>
+              <p>Tech companies rely on our virtual assistants for customer support, onboarding coordination, sales support, appointment setting, and operational assistance to improve efficiency and scale without increasing internal overhead.</p>
+            </div>
+            <div class="box industry-box">
+              <h3>Hospitality</h3>
+              <p>We provide virtual support for hospitality businesses by managing reservations, guest communication, scheduling, and administrative coordination to help maintain excellent service standards and operational efficiency.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ===== PROCESS PAGE ===== -->
+    <section id="process" class="page-section">
+      <section class="section">
+        <div class="container">
+          <h2 class="text-center">Our Process<br><span style="font-weight:400;font-size:21px;color:var(--body-text);display:block;margin-top:8px">How It Works</span></h2>
+          
+          <div class="process-steps">
+            <div class="box step">
+              <div class="step-number">1</div>
+              <h3>Schedule a Consultation</h3>
+              <p>Share your business requirements, team structure, and operational goals. We assess your needs and identify the right virtual professionals to support your growth.</p>
+            </div>
+            <div class="box step">
+              <div class="step-number">2</div>
+              <h3>We Select & Onboard Your Virtual Team</h3>
+              <p>Our team carefully matches you with pre-trained virtual assistants tailored to your industry and workload. We handle the coordination, onboarding process, and performance alignment.</p>
+            </div>
+            <div class="box step">
+              <div class="step-number">3</div>
+              <h3>Seamless Integration & Ongoing Support</h3>
+              <p>Your virtual professionals integrate directly into your operations, supporting daily tasks efficiently while we ensure consistent quality and reliability.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ===== CONTACT PAGE ===== -->
+    <section id="contact" class="page-section">
+      <section class="section">
+        <div class="container contact-grid">
+          <div class="contact-intro">
+            <h2>Let's Help You Elevate Your Operations</h2>
+            <p>Ready to scale your business with performance-ready virtual professionals? Schedule a consultation with our team to discuss your staffing needs and discover how S&N Leads Network can support your growth.</p>
+            <p>Whether you need immediate support or are planning for future expansion, we're here to provide flexible, cost-effective solutions tailored to your unique requirements.</p>
+            <div class="box highlight-box" style="margin-top:30px">
+              <p style="margin:0;font-size:16px"><strong>📧</strong> sn.leads.network@gmail.com</p>
+              <p style="margin:12px 0 0;font-size:16px"><strong>🔗</strong> <a href="https://linkedin.com/company/s-n-leads" target="_blank" style="color:white;text-decoration:underline;font-weight:600">Connect on LinkedIn</a></p>
+            </div>
+          </div>
+          
+          <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label>Company / Individual Name <span class="required">*</span></label>
+              <input type="text" required placeholder="Your name or company">
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label>Phone Number <span class="required">*</span></label>
+              <input type="tel" required placeholder="+1 (555) 123-4567">
+            </div>
+            <div class="form-group">
+              <label>What Services Are You Interested In</label>
+              <select>
+                <option value="">Select a service...</option>
+                <option>Customer Service Representatives</option>
+                <option>Sales Representatives</option>
+                <option>Virtual Assistants</option>
+                <option>HR Assistants</option>
+                <option>Technical Support</option>
+                <option>Lead Generation</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Country</label>
+              <input type="text" placeholder="Your country">
+            </div>
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" placeholder="Your city">
+            </div>
+            <button type="submit" class="gradient-cta" style="width:100%;font-size:16px">Schedule Your Consultation</button>
+          </form>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Need Help?</h4>
+          <div class="social-buttons">
+            <a href="https://linkedin.com/company/s-n-leads" target="_blank" class="social-btn">
+              <span>in</span> LinkedIn
+            </a>
+            <a href="mailto:sn.leads.network@gmail.com" class="social-btn">
+              <span>✉</span> Email
+            </a>
+          </div>
+          <p style="margin-top:24px;font-size:14px;line-height:1.8">
+            S&N Leads Network specializes in providing pre-trained, performance-ready virtual professionals to support businesses in scaling efficiently. We deliver flexible, cost-effective staffing solutions that integrate seamlessly into your operations.
+          </p>
+        </div>
+        
+        <div class="footer-section footer-links">
+          <h4>More</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Disclaimer</a>
+          <a href="#">FAQ</a>
+          <a href="#" onclick="showPage('contact')">Contact</a>
+          <a href="#">Sitemap</a>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p style="font-size:14px;margin-bottom:10px"><strong>Email:</strong></p>
+          <p style="font-size:14px"><a href="mailto:sn.leads.network@gmail.com" style="color:var(--primary-purple);font-weight:600">sn.leads.network@gmail.com</a></p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Global Service Statement</h4>
+          <p style="font-size:14px;line-height:1.7">
+            <strong>Virtual Staffing Services Worldwide</strong><br>
+            Serving businesses across North America, South America, Europe, Asia, the Middle East, Africa, and Australia.
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-list">
+          <strong>Industries We Serve:</strong><br>
+          Real Estate | Healthcare | Education | E-commerce | Finance & Insurance | Technology & SaaS | Hospitality | Legal Services | Manufacturing | Marketing Agencies | Startups | Corporate Enterprises
+        </p>
+        <p class="footer-list" style="margin-top:20px">
+          <strong>Our Services:</strong><br>
+          Customer Service Representatives • Sales Representatives • Virtual Assistants • HR Assistants • Account Support Agents • Performance Tracking Specialists • Team Leaders • Project Assistants • Technical Support Agents • Marketing Support Staff • Social Media Management Personnel • Blog and Content Creators • Lead Generation Specialists • Administrative Support Staff • Documentation Specialists • Content Posting and Management Services • Appointment Setting Professionals • Data Entry Specialists • Customized Virtual Support Solutions Based on Business Requirements
+        </p>
+        <p style="margin-top:30px;font-size:12px;opacity:0.8">
+          © 2026 S&N Leads Network. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Page Navigation with smooth fade
+    function showPage(pageId) {
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(pageId).classList.add('active');
+      
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if(link.dataset.page === pageId) {
+          link.classList.add('active');
+        }
+      });
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('navMenu').classList.remove('active');
+    }
+
+    // Nav link click handler
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = link.dataset.page;
+        if(page) showPage(page);
+      });
+    });
+
+    // Industry dropdown links
+    document.querySelectorAll('.industry-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage('industries');
+      });
+    });
+
+    // Mobile menu toggle
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    // Form submission
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      
+      setTimeout(() => {
+        alert('✓ Thank you! Your consultation request has been received. Our team will contact you within 24 hours.');
+        e.target.reset();
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }, 1200);
+    }
+
+    // Close mobile menu on resize
+    window.addEventListener('resize', () => {
+      if(window.innerWidth > 768) {
+        document.getElementById('navMenu').classList.remove('active');
+      }
+    });
+
+    // Add scroll animation to boxes
+    document.addEventListener('DOMContentLoaded', () => {
+      const boxes = document.querySelectorAll('.box');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      boxes.forEach(box => {
+        box.style.opacity = '0';
+        box.style.transform = 'translateY(20px)';
+        box.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(box);
+      });
+    });
+  </script>
+</body>
+</html>
